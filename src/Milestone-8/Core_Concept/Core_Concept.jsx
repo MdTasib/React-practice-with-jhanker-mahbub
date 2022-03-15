@@ -19,15 +19,16 @@ const Core_Concept = () => {
 				Age : {student.age}
 			</p>
 
-			<Person />
-			<Person />
-			<Person />
+			<Person name='Tasib' age='19' />
+			<Person name='Rafi' age='23' />
+			<Person name='Rakib' age='18' />
 		</div>
 	);
 };
 
 // create new component
-function Person() {
+function Person(props) {
+	console.log(props);
 	return (
 		<div
 			style={{
@@ -36,8 +37,8 @@ function Person() {
 				margin: "20px",
 				borderRadius: "20px",
 			}}>
-			<h3>Name: Tasib</h3>
-			<h5>age: 19</h5>
+			<h3>Name: {props.name}</h3>
+			<h5>age: {props.age}</h5>
 			<p>Profession: Web developer</p>
 		</div>
 	);
