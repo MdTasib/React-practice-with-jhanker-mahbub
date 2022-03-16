@@ -10,6 +10,12 @@ const color = {
 	background: "black",
 };
 
+const users = [
+	{ name: "Tasib", age: 19 },
+	{ name: "Rafi", age: 23 },
+	{ name: "Rakib", age: 18 },
+];
+
 const Core_Concept = () => {
 	return (
 		<div>
@@ -19,16 +25,19 @@ const Core_Concept = () => {
 				Age : {student.age}
 			</p>
 
-			<Person name='Tasib' age='19' />
+			{/* <Person name='Tasib' age='19' />
 			<Person name='Rafi' age='23' />
-			<Person name='Rakib' age='18' />
+			<Person name='Rakib' age='18' /> */}
+
+			{users.map(user => (
+				<Person name={user.name} age={user.age} />
+			))}
 		</div>
 	);
 };
 
 // create new component
 function Person(props) {
-	console.log(props);
 	return (
 		<div
 			style={{
