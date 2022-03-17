@@ -6,7 +6,7 @@ const Milestone8 = () => {
 	return (
 		<div>
 			{/* <Core_Concept /> */}
-			<Recap_Core_Concepet />
+			{/* <Recap_Core_Concepet /> */}
 		</div>
 	);
 };
