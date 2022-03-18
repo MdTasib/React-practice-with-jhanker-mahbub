@@ -8,7 +8,7 @@ const Milestone8 = () => {
 			{/* <Core_Concept /> */}
 			{/* <Recap_Core_Concepet /> */}
 		</div>
-	);
+	)
 };
 
 export default Milestone8;
