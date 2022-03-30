@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, Route, Routes, useResolvedPath, useMatch } from 'react-router-dom';
 import About from './About/About';
+import FriendDetail from './DynamicRoute/FriendDetail/FriendDetail';
 import Friends from './DynamicRoute/Friends/Friends';
 import Home from './Home/Home';
 import NotFound from './NotFound/NotFound';
@@ -15,11 +16,11 @@ const ReactRouter = () => {
           <li><CustomLink to='/friends'>Friends</CustomLink></li>
         </ul>
       </nav>
-
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='about' element={<About/>}/>
         <Route path='friends' element={<Friends/>}/>
+        <Route path='friend/:friendId' element={<FriendDetail/>}/>
         <Route path='*' element={<NotFound/>}/>
       </Routes>
     </div>
