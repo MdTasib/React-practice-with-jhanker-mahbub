@@ -4,6 +4,8 @@ import About from './About/About';
 import FriendDetail from './DynamicRoute/FriendDetail/FriendDetail';
 import Friends from './DynamicRoute/Friends/Friends';
 import Home from './Home/Home';
+import Post from './NestedRoute/Post/Post';
+import Posts from './NestedRoute/Posts/Posts';
 import NotFound from './NotFound/NotFound';
 
 const ReactRouter = () => {
@@ -14,6 +16,7 @@ const ReactRouter = () => {
           <li><CustomLink to='/'>Home</CustomLink></li>
           <li><CustomLink to='/about'>About</CustomLink></li>
           <li><CustomLink to='/friends'>Friends</CustomLink></li>
+          <li><CustomLink to='/posts'>Posts</CustomLink></li>
         </ul>
       </nav>
       <Routes>
@@ -21,6 +24,9 @@ const ReactRouter = () => {
         <Route path='about' element={<About/>}/>
         <Route path='friends' element={<Friends/>}/>
         <Route path='friend/:friendId' element={<FriendDetail/>}/>
+        <Route path='posts' element={<Posts/>}>
+          <Route path=':postId' element={<Post/>}/>
+        </Route>
         <Route path='*' element={<NotFound/>}/>
       </Routes>
     </div>
