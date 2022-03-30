@@ -6,7 +6,7 @@ import "./Shop.css";
 const Shop = () => {
 	const [products, setProducts] = useState([]);
 	const [cart, setCart] = useState([]);
-	console.log(products);
+	console.log(cart);
 
 	useEffect(() => {
 		fetch(
@@ -16,14 +16,29 @@ const Shop = () => {
 			.then(data => setProducts(data));
 	}, []);
 
+	// const handleAddToCart = selectedProduct => {
+	// 	const newCart = [...cart, selectedProduct];
+	// 	setCart(newCart);
+	// };
+
 	const handleAddToCart = selectedProduct => {
-		const newCart = [...cart, selectedProduct];
+		let newCart = [];
+		const exist = cart.find(product => product.id === selectedProduct.id);
+
+		if (!exist) {
+			selectedProduct.quantity = 1;
+			newCart = [...cart, selectedProduct];
+		} else {
+			const rest = cart.filter(product => product.id !== selectedProduct.id);
+			selectedProduct.quantity += 1;
+			newCart = [...rest, selectedProduct];
+		}
+
 		setCart(newCart);
 	};
-	console.log(cart);
 
 	const handleClearCart = () => {
-		console.log("Delete");
+		setCart([]);
 	};
 
 	return (
