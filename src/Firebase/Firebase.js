@@ -1,11 +1,12 @@
 import React from "react";
-import app from "./firebase.init";
-import { getAuth } from "firebase/auth";
-
-const auth = getAuth(app);
+import GoogleSingIn from "./GoogleSingIn/GoogleSingIn";
 
 const Firebase = () => {
-	return <div>firebase init</div>;
+	return (
+		<div>
+			<GoogleSingIn />
+		</div>
+	);
 };
 
 export default Firebase;
