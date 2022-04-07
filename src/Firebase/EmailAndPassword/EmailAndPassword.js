@@ -5,6 +5,7 @@ import {
 	sendEmailVerification,
 	sendPasswordResetEmail,
 	signInWithEmailAndPassword,
+	updateProfile,
 } from "firebase/auth";
 import app from "../firebase.init";
 import { Button, Form } from "react-bootstrap";
@@ -14,6 +15,7 @@ const auth = getAuth(app);
 const EmailAndPassword = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [name, setName] = useState("");
 	const [register, setRegister] = useState(false);
 	const [error, setError] = useState("");
 	const [validated, setValidated] = useState(false);
@@ -24,6 +26,10 @@ const EmailAndPassword = () => {
 
 	const handlePassword = event => {
 		setPassword(event.target.value);
+	};
+
+	const handleName = event => {
+		setName(event.target.value);
 	};
 
 	const handleCheckBox = event => {
@@ -61,6 +67,7 @@ const EmailAndPassword = () => {
 					setEmail("");
 					setPassword("");
 					verifyEmail();
+					handleUserName();
 					console.log(user);
 				})
 				.catch(error => {
@@ -82,12 +89,35 @@ const EmailAndPassword = () => {
 		});
 	};
 
+	const handleUserName = () => {
+		updateProfile(auth.currentUser, {
+			displayName: name,
+		}).then(() => {
+			console.log("set user name");
+		});
+	};
+
 	return (
 		<div className='w-50 mx-auto mt-5'>
 			<h3 className='text-primary'>
 				Please {register ? "Login" : "Register"}!!!
 			</h3>
 			<Form noValidate validated={validated} onSubmit={handleSubmit}>
+				{!register && (
+					<Form.Group className='mb-3' controlId='formBasicEmail'>
+						<Form.Label>Your Name</Form.Label>
+						<Form.Control
+							onBlur={handleName}
+							type='text'
+							placeholder='Your Name'
+							required
+						/>
+						<Form.Control.Feedback type='invalid'>
+							Please provide your name
+						</Form.Control.Feedback>
+					</Form.Group>
+				)}
+
 				<Form.Group className='mb-3' controlId='formBasicEmail'>
 					<Form.Label>Email address</Form.Label>
 					<Form.Control
