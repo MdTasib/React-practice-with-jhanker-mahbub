@@ -1,8 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useFirebase from "../../hooks/useFirebase";
 import "./Header.css";
 
 const Header = () => {
+	const { user } = useFirebase();
+
 	return (
 		<div>
 			<nav>
@@ -20,7 +23,11 @@ const Header = () => {
 						<Link to='/register'>Register</Link>
 					</li>
 					<li>
-						<Link to='/login'>Login</Link>
+						{user.uid ? (
+							<button>Sing Out</button>
+						) : (
+							<Link to='/login'>Login</Link>
+						)}
 					</li>
 				</ul>
 			</nav>
