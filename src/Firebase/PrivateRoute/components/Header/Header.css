@@ -1,0 +1,19 @@
+nav {
+	background: none !important;
+}
+
+nav ul li {
+	display: inline-block;
+	margin: 0 20px;
+	text-align: center;
+}
+
+nav ul li a {
+	text-decoration: none;
+	font-weight: bolder;
+	color: black;
+}
+
+nav ul li a:hover {
+	color: indianred;
+}
