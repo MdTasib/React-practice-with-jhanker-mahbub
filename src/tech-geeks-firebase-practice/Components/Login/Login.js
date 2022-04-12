@@ -2,7 +2,11 @@ import React from "react";
 import "./AuthForm.css";
 import GoogleLogo from "../../Assets/Image/google.svg";
 import { useNavigate } from "react-router-dom";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import {
+	GoogleAuthProvider,
+	signInWithEmailAndPassword,
+	signInWithPopup,
+} from "firebase/auth";
 import auth from "../../Firebase/firebase.init";
 
 const provider = new GoogleAuthProvider();
@@ -14,6 +18,19 @@ const Login = () => {
 		signInWithPopup(auth, provider)
 			.then(result => {
 				const user = result.user;
+				navigate("/");
+			})
+			.catch(error => console.log(error.message));
+	};
+
+	const handleLogIn = event => {
+		event.preventDefault();
+		const email = event.target.email.value;
+		const password = event.target.password.value;
+
+		signInWithEmailAndPassword(auth, email, password)
+			.then(result => {
+				const user = result.user;
 				console.log(user);
 			})
 			.catch(error => console.log(error.message));
@@ -23,7 +40,7 @@ const Login = () => {
 		<div className='auth-form-container '>
 			<div className='auth-form'>
 				<h1>Login</h1>
-				<form>
+				<form onSubmit={handleLogIn}>
 					<div className='input-field'>
 						<label htmlFor='email'>Email</label>
 						<div className='input-wrapper'>
