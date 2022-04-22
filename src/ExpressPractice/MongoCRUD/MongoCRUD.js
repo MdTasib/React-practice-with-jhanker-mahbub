@@ -1,6 +1,14 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 const MongoCRUD = () => {
+	const [users, setUsers] = useState([]);
+
+	useEffect(() => {
+		fetch("http://localhost:5000/user")
+			.then(res => res.json())
+			.then(data => setUsers(data));
+	}, []);
+
 	const handlePostData = event => {
 		event.preventDefault();
 		const name = event.target.name.value;
@@ -19,6 +27,23 @@ const MongoCRUD = () => {
 				event.target.reset();
 			});
 	};
+
+	// delete
+	const handleDelete = id => {
+		const confirmDelete = window.confirm("Are you sure delete this item ?");
+		if (confirmDelete) {
+			fetch(`http://localhost:5000/user/${id}`, {
+				method: "DELETE",
+			})
+				.then(res => res.json())
+				.then(data => {
+					if (data.deletedCount > 0) {
+						console.log("deleted");
+					}
+				});
+		}
+	};
+
 	return (
 		<div>
 			<h2>Mongo CRUD</h2>
@@ -27,6 +52,16 @@ const MongoCRUD = () => {
 				<input type='email' name='email' placeholder='email' />
 				<input type='submit' value='Add User' />
 			</form>
+			<div className='py-3'>
+				<ul>
+					{users.map(user => (
+						<li key={user._id}>
+							{user.name} - {user.email}
+							<button onClick={() => handleDelete(user._id)}>X</button>
+						</li>
+					))}
+				</ul>
+			</div>
 		</div>
 	);
 };
