@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 const MongoCRUD = () => {
 	const [users, setUsers] = useState([]);
 
+	// load all user
 	useEffect(() => {
 		fetch("http://localhost:5000/user")
 			.then(res => res.json())
@@ -39,6 +40,8 @@ const MongoCRUD = () => {
 				.then(data => {
 					if (data.deletedCount > 0) {
 						console.log("deleted");
+						const remaining = users.filter(user => user._id !== id);
+						setUsers(remaining);
 					}
 				});
 		}
