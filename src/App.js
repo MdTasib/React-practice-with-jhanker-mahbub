@@ -5,6 +5,7 @@ import Milestone9 from "./Milestone9/Milestone9";
 import TechGeek from "./tech-geeks-firebase-practice/TechGeek";
 import FirstNode from "./ExpressPractice/FirstNode/FirstNode";
 import ExpressPractice from "./ExpressPractice/ExpressPractice";
+import ReactHooks from "./ReactHooks/ReactHooks";
 
 function App() {
 	return (
@@ -15,7 +16,8 @@ function App() {
 			{/* <TechGeek /> */}
 			{/* <MyGoogleMap /> */}
 			{/* <FirstNode /> */}
-			<ExpressPractice />
+			{/* <ExpressPractice /> */}
+			<ReactHooks />
 		</>
 	);
 }
