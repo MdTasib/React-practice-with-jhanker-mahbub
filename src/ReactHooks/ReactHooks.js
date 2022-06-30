@@ -1,4 +1,5 @@
 import React from "react";
+import CustomHook1 from "./components/CustomHook";
 import RefExample1 from "./components/RefExample1";
 import RefExample2 from "./components/RefExample2";
 import UseCallbackExample from "./components/UseCallbackExample";
@@ -13,7 +14,8 @@ function ReactHooks(props) {
 			{/* <RefExample1 /> */}
 			{/* <RefExample2 /> */}
 			{/* <UseMemoExample /> */}
-			<UseCallbackExample />
+			{/* <UseCallbackExample /> */}
+			{/* <CustomHook1 /> */}
 		</>
 	);
 }
