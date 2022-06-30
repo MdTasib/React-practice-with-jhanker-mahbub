@@ -1,6 +1,7 @@
 import React from "react";
 import RefExample1 from "./components/RefExample1";
 import RefExample2 from "./components/RefExample2";
+import UseCallbackExample from "./components/UseCallbackExample";
 import UseMemoExample from "./components/UseMemoExample";
 
 function ReactHooks(props) {
@@ -11,7 +12,8 @@ function ReactHooks(props) {
 			</div>
 			{/* <RefExample1 /> */}
 			{/* <RefExample2 /> */}
-			<UseMemoExample />
+			{/* <UseMemoExample /> */}
+			<UseCallbackExample />
 		</>
 	);
 }
